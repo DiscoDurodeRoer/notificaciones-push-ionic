@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Ejemplo notificaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form (ngSubmit)="sendNotification()">
+ 
+    <ion-item>
+      <ion-input name="title" label="Titulo notificacion" [(ngModel)]="notification.title" />
+    </ion-item>
+  
+    <ion-item>
+      <ion-textarea name="body" label="Cuerpo notificacion" [(ngModel)]="notification.body"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-input name="body" type="url" inputmode="url" label="URL notificacion" [(ngModel)]="notification.url"/>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Fecha envio</ion-label>
+      <ion-datetime-button slot="end" datetime="datetime"/>
+      
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="datetime" name="datetime" [(ngModel)]="notification.date" />
+        </ng-template>
+      </ion-modal>  
+    </ion-item>
+  
+    <ion-item lines="none">
+      <ion-button type="submit" slot="end">Enviar</ion-button>
+    </ion-item>
+  
+  </form>
+  
+</ion-content>
